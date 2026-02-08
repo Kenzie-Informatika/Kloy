@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KLOY DEPLOYER</title>
+    <title>RLOY DEPLOYER</title>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -59,26 +59,21 @@
     </section>
 
 <script>
-    // --- KONFIGURASI FIREBASE BARU ---
-    // Saya sesuaikan formatnya agar jalan di HTML biasa
+    // FIX: URL Singapore Server (asia-southeast1)
     const firebaseConfig = {
-        apiKey: "AIzaSyBFo47gOFvQvpwIj7mrie63uVttJTIBoz4",
-        authDomain: "kloy-b0ed5.firebaseapp.com",
-        // DATABASE URL (Wajib Ada): Saya set ke Asia Southeast (Singapore) sesuai Project ID
-        databaseURL: "https://kloy-b0ed5-default-rtdb.asia-southeast1.firebasedatabase.app",
-        projectId: "kloy-b0ed5",
-        storageBucket: "kloy-b0ed5.firebasestorage.app",
-        messagingSenderId: "891008728926",
-        appId: "1:891008728926:web:2dbe8ef4aac9a360be59cf"
+        apiKey: "AIzaSyCtkndqaHPx7PfbjJ2xbd3mda_cz3NwIpE",
+        authDomain: "miningtransaction.firebaseapp.com",
+        projectId: "miningtransaction",
+        databaseURL: "https://miningtransaction-default-rtdb.asia-southeast1.firebasedatabase.app",
+        storageBucket: "miningtransaction.firebasestorage.app",
+        messagingSenderId: "839897955886",
+        appId: "1:839897955886:web:78cdd18c9624496dda69bf"
     };
 
-    // Inisialisasi Firebase
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
 
-    // --- LOGIKA PROGRAM (TIDAK ADA YANG DIUBAH) ---
-
-    // 1. Cek Status Koneksi
+    // Koneksi Indikator
     db.ref(".info/connected").on("value", (snap) => {
         const statusBox = document.getElementById('db-status-box');
         if (snap.val() === true) {
@@ -90,7 +85,7 @@
         }
     });
 
-    const ADM = "Admin", PAS = "Kenziepro";
+    const ADM = "admin", PAS = "2013GG";
 
     window.onload = () => {
         const h = window.location.hash.substring(1);
@@ -129,7 +124,6 @@
             document.getElementById('web-html').value = "";
             b.innerText = "PUBLISH SEKARANG 🚀"; b.disabled = false;
         }).catch(e => {
-            console.error(e);
             alert("Gagal! Cek Rules di Firebase Console.");
             b.innerText = "PUBLISH SEKARANG 🚀"; b.disabled = false;
         });
