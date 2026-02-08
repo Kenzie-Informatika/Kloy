@@ -72,7 +72,7 @@
     };
 
     firebase.initializeApp(firebaseConfig);
-    const db = firebase.database();
+    const app = initializeApp(firebaseConfig);
 
     // Koneksi Indikator
     db.ref(".info/connected").on("value", (snap) => {
