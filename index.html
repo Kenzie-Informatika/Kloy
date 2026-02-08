@@ -23,7 +23,7 @@
 
     <section id="login-page" class="min-h-screen flex items-center justify-center">
         <div class="w-full max-w-sm glass p-10 text-center border border-white/10 shadow-2xl">
-            <h1 class="text-5xl font-black italic mb-2 tracking-tighter">RLOY<span class="text-yellow-400">.</span></h1>
+            <h1 class="text-5xl font-black italic mb-2 tracking-tighter">KLOY<span class="text-yellow-400">.</span></h1>
             <p class="text-gray-500 text-[10px] uppercase tracking-[0.4em] mb-12">PT Bangga Karya Indonesia</p>
             <input type="text" id="u-in" placeholder="Username Admin" class="input-bki text-center">
             <input type="password" id="p-in" placeholder="Password" class="input-bki text-center">
@@ -59,23 +59,26 @@
     </section>
 
 <script>
-    import { initializeApp } from "firebase/app";
-    // FIX: URL Singapore Server (asia-southeast1)
-    // SAYA SUDAH MENAMBAHKAN databaseURL DI BAWAH INI AGAR KONEK
+    // --- KONFIGURASI FIREBASE BARU ---
+    // Saya sesuaikan formatnya agar jalan di HTML biasa
     const firebaseConfig = {
         apiKey: "AIzaSyBFo47gOFvQvpwIj7mrie63uVttJTIBoz4",
         authDomain: "kloy-b0ed5.firebaseapp.com",
-        databaseURL: "https://kloy-b0ed5-default-rtdb.asia-southeast1.firebasedatabase.app", 
+        // DATABASE URL (Wajib Ada): Saya set ke Asia Southeast (Singapore) sesuai Project ID
+        databaseURL: "https://kloy-b0ed5-default-rtdb.asia-southeast1.firebasedatabase.app",
         projectId: "kloy-b0ed5",
-        storageBucket: "kloy-b0ed5.appspot.com",
+        storageBucket: "kloy-b0ed5.firebasestorage.app",
         messagingSenderId: "891008728926",
         appId: "1:891008728926:web:2dbe8ef4aac9a360be59cf"
     };
 
+    // Inisialisasi Firebase
     firebase.initializeApp(firebaseConfig);
-    const app = initializeApp(firebaseConfig);
+    const db = firebase.database();
 
-    // Koneksi Indikator
+    // --- LOGIKA PROGRAM (TIDAK ADA YANG DIUBAH) ---
+
+    // 1. Cek Status Koneksi
     db.ref(".info/connected").on("value", (snap) => {
         const statusBox = document.getElementById('db-status-box');
         if (snap.val() === true) {
